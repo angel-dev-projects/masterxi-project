@@ -1,0 +1,48 @@
+<div class="d-flex flex-column align-items-center p-5" data-aos="fade-left">
+  <h1 class="text-center">Login</h1>
+
+  <h6 class="text-center">Join the best fantasy football game!</h6>
+
+  <form (ngSubmit)="onLogin()" class="mt-4 p-3 d-flex flex-column gap-2">
+    <div>
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        id="username"
+        class="form-control"
+        required
+        [(ngModel)]="login.username"
+        name="username"
+        autocomplete="off"
+      />
+      <ul>
+        @if(formErrors.username) { @for(error of formErrors.username; track
+        $index) {
+        <li class="text-danger">{{ error }}</li>
+        } }
+      </ul>
+    </div>
+
+    <div>
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        required
+        [(ngModel)]="login.password"
+        name="password"
+      />
+      <ul>
+        @if(formErrors.password) { @for(error of formErrors.password; track
+        $index) {
+        <li class="text-danger">{{ error }}</li>
+        } }
+      </ul>
+    </div>
+
+    <button class="btn btn-primary fw-bold" type="submit" role="button">
+      Login
+    </button>
+  </form>
+</div>

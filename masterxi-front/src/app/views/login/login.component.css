@@ -1,0 +1,17 @@
+* {
+  color: #33475b;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+form {
+  width: 35%;
+}
+
+@media only screen and (max-width: 770px) {
+  form {
+    width: 100%;
+  }
+}

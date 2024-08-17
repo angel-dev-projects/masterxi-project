@@ -1,0 +1,288 @@
+<div
+  class="d-flex flex-column gap-3 align-items-center m-auto mt-4"
+  id="container-divs"
+>
+  <div class="rounded shadow w-100">
+    <div
+      class="p-3 action"
+      data-bs-toggle="modal"
+      data-bs-target="#changeUsernameModal"
+    >
+      <div class="fw-bold">Change username</div>
+      <div class="text-muted">{{ userService.getDecodedToken().username }}</div>
+    </div>
+
+    <div
+      class="p-3 action"
+      data-bs-toggle="modal"
+      data-bs-target="#changeEmailModal"
+    >
+      <div class="fw-bold">Change email</div>
+      <div class="text-muted">{{ userService.getDecodedToken().email }}</div>
+    </div>
+
+    <div
+      class="p-3 fw-bold action"
+      data-bs-toggle="modal"
+      data-bs-target="#changePasswordModal"
+    >
+      Change password
+    </div>
+  </div>
+
+  <div
+    class="p-3 rounded shadow w-100 fw-bold action"
+    (click)="userService.logOut()"
+  >
+    Log out
+  </div>
+
+  <div
+    class="p-3 rounded shadow w-100 action"
+    data-bs-toggle="modal"
+    data-bs-target="#deleteUserModal"
+  >
+    <div class="fw-bold">Delete account forever</div>
+    <div class="text-danger">
+      This action is irreversible. You will lose all your leagues.
+    </div>
+  </div>
+</div>
+
+<!-- Modal Change Username -->
+<div
+  class="modal fade"
+  id="changeUsernameModal"
+  tabindex="-1"
+  aria-labelledby="changeUsernameModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="changeUsernameModalLabel">
+          Change username
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="closeChangeUsernameModal"
+        ></button>
+      </div>
+      <form (ngSubmit)="changeUsername()">
+        <div class="modal-body">
+          <label for="new_username" class="form-label">New username</label>
+          <input
+            type="text"
+            id="new_username"
+            class="form-control"
+            required
+            [(ngModel)]="newUsername"
+            name="newUsername"
+            autocomplete="off"
+          />
+          <ul>
+            @if(formErrors.username) { @for(error of formErrors.username; track
+            $index) {
+            <li class="text-danger">{{ error }}</li>
+            } }
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" role="button">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Change Email -->
+<div
+  class="modal fade"
+  id="changeEmailModal"
+  tabindex="-1"
+  aria-labelledby="changeEmailModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="changeEmailModalLabel">
+          Change email
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="closeChangeEmailModal"
+        ></button>
+      </div>
+      <form (ngSubmit)="changeEmail()">
+        <div class="modal-body">
+          <label for="new_email" class="form-label">New email</label>
+          <input
+            type="text"
+            id="new_email"
+            class="form-control"
+            required
+            [(ngModel)]="newEmail"
+            name="newEmail"
+            autocomplete="off"
+          />
+          <ul>
+            @if(formErrors.email) { @for(error of formErrors.email; track
+            $index) {
+            <li class="text-danger">{{ error }}</li>
+            } }
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" role="button" class="btn btn-primary">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Change Password -->
+<div
+  class="modal fade"
+  id="changePasswordModal"
+  tabindex="-1"
+  aria-labelledby="changePasswordModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="changePasswordModalLabel">
+          Change password
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="closeChangePasswordModal"
+        ></button>
+      </div>
+      <form (ngSubmit)="changePassword()">
+        <div class="modal-body">
+          <label for="current_password" class="form-label"
+            >Current password</label
+          >
+          <input
+            type="password"
+            id="current_password"
+            class="form-control"
+            required
+            [(ngModel)]="currentPassword"
+            name="currentPassword"
+          />
+          <ul>
+            @if(formErrors.currentPassword) { @for(error of
+            formErrors.currentPassword; track $index) {
+            <li class="text-danger">{{ error }}</li>
+            } }
+          </ul>
+          <label for="new_password" class="form-label">New password</label>
+          <input
+            type="password"
+            id="new_password"
+            class="form-control"
+            required
+            [(ngModel)]="newPassword"
+            name="newPassword"
+          />
+          <ul>
+            @if(formErrors.newPassword) { @for(error of formErrors.newPassword;
+            track $index) {
+            <li class="text-danger">{{ error }}</li>
+            } }
+          </ul>
+          <label for="new_password_confirm" class="form-label"
+            >Repeat new password</label
+          >
+          <input
+            type="password"
+            id="new_password_confirm"
+            class="form-control"
+            [(ngModel)]="newPasswordConfirm"
+            name="newPasswordConfirm"
+            required
+          />
+          <ul>
+            @if(formErrors.newPasswordConfirm) { @for(error of
+            formErrors.newPasswordConfirm; track $index) {
+            <li class="text-danger">{{ error }}</li>
+            } }
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" role="button" class="btn btn-primary">
+            Save changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete User -->
+<div
+  class="modal fade"
+  id="deleteUserModal"
+  tabindex="-1"
+  aria-labelledby="deleteUserModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteUserModalLabel">
+          Are you sure?
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="closeDeleteUserModal"
+        ></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>
+          You will lose all your leagues. If you are an admin in any of them, a
+          new one will be automatically assigned.
+        </p>
+        <p class="text-danger">This action is irreversible.</p>
+        <p>Type <b>DELETE</b> to confirm:</p>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Type here..."
+          [(ngModel)]="deleteConfirmation"
+          (ngModelChange)="onInputDeleteChange()"
+        />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          role="button"
+          class="btn btn-danger"
+          [disabled]="isButtonDeleteDisabled"
+          (click)="deleteUser()"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

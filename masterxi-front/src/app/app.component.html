@@ -1,0 +1,10 @@
+<app-spinner></app-spinner>
+
+<app-header></app-header>
+
+<router-outlet />
+
+@if(router.url === '/home' || router.url === '/transfers' || router.url ===
+'/team' || router.url === '/standings'){
+<app-footer></app-footer>
+}

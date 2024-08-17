@@ -1,0 +1,11 @@
+#container-divs {
+  width: 50%;
+}
+
+#container-divs div {
+  cursor: pointer;
+}
+
+#container-divs .action:hover {
+  background-color: rgb(244, 244, 244);
+}

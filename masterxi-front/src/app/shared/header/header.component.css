@@ -1,0 +1,45 @@
+header {
+  position: fixed;
+  top: 0;
+}
+
+.company-logo {
+  height: 3rem;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+  cursor: pointer;
+}
+
+a {
+  color: #309aab;
+  cursor: pointer;
+}
+
+i {
+  color: #309aab;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 770px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+.offcanvas-end {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: all 0.2s ease;
+}
+
+.offcanvas-end.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+h5 {
+  font-weight: 700;
+}

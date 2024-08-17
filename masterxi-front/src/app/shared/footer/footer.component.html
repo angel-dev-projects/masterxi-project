@@ -1,0 +1,37 @@
+<footer class="d-flex flex-wrap justify-content-center align-items-center shadow">
+  <div
+    class="link"
+    routerLink="/home"
+    [ngClass]="{ active: router.url === '/home' }"
+  >
+    <i class="fa-solid fa-house"></i>
+    Home
+  </div>
+
+  <div
+    class="link"
+    routerLink="/transfers"
+    [ngClass]="{ active: router.url === '/transfers' }"
+  >
+    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+    Transfers
+  </div>
+
+  <div
+    class="link"
+    routerLink="/team"
+    [ngClass]="{ active: router.url === '/team' }"
+  >
+    <i class="fa-regular fa-futbol"></i>
+    Team
+  </div>
+
+  <div
+    class="link"
+    routerLink="/standings"
+    [ngClass]="{ active: router.url === '/standings' }"
+  >
+    <i class="fa-solid fa-trophy"></i>
+    Standings
+  </div>
+</footer>

@@ -1,0 +1,28 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 15vh 2vh 15vh;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #b4bbc6;
+}
+
+i {
+  font-size: 1.4rem;
+}
+
+.link:hover {
+  background-color: rgb(244, 244, 244);
+}
+
+.active {
+  color: #309aab;
+}
