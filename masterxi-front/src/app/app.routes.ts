@@ -47,12 +47,12 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
 
-    // Standings
-    {
-      path: 'settings',
-      component: SettingsComponent,
-      canActivate: [authGuard],
-    },
+  // Settings
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [authGuard],
+  },
 
   // Default route
   {

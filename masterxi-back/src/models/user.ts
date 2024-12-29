@@ -1,11 +1,21 @@
-import { Model, DataTypes } from "sequelize";
+import {
+  Model,
+  DataTypes,
+  BelongsToManyGetAssociationsMixin,
+  BelongsToManyAddAssociationMixin,
+  BelongsToManyRemoveAssociationMixin,
+} from "sequelize";
 import sequelize from "../db/connection";
+import { League } from "./league";
 
 export class User extends Model {
   public id!: number;
   public email!: string;
   public username!: string;
   public password!: string;
+  public getLeagues!: BelongsToManyGetAssociationsMixin<League>;
+  public addLeague!: BelongsToManyAddAssociationMixin<League, number>;
+  public removeLeague!: BelongsToManyRemoveAssociationMixin<League, number>;
 }
 
 User.init(
